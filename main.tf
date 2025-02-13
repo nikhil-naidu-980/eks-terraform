@@ -27,3 +27,18 @@ resource "aws_subnet" "private" {
     Name = "Private Subnet"
   }
 }
+
+resource "aws_security_group" "eks" {
+  name        = "eks-security-group"
+  description = "Allow access to EKS cluster"
+  vpc_id      = aws_vpc.main.id
+}
+  
+resource "aws_security_group_rule" "allow_ingress" {
+  type        = "ingress"
+  from_port   = 0
+  to_port     = 65535
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.eks.id
+}
