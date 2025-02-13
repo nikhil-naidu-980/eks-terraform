@@ -105,7 +105,7 @@ resource "aws_iam_role_policy_attachment" "cloudwatch_logs" {
   
 resource "aws_iam_role_policy_attachment" "autoscaling" {
   role       = aws_iam_role.eks_node_role.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2AutoScalingFullAccess"
+  policy_arn = "arn:aws:iam::aws:policy/AutoScalingFullAccess"
 }
   
 resource "aws_iam_role_policy_attachment" "ec2_full" {
