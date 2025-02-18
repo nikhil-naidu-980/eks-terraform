@@ -124,6 +124,7 @@ resource "aws_eks_cluster" "main" {
 }
   
 resource "aws_eks_node_group" "main" {
+  depends_on = [aws_eks_cluster.main]
   cluster_name    = aws_eks_cluster.main.name
   node_group_name = "my-node-group"
   node_role_arn   = aws_iam_role.eks_node_role.arn
